@@ -2,7 +2,7 @@ public class HighScore {
     int point1;
     int point2;
 
-    public HighScore(int point1, int point2) {
+    public HighScore() {
         this.point1 = 0;
         this.point2 = 0;
     }
@@ -26,9 +26,9 @@ public class HighScore {
      */
     public void highScore(){
         System.out.println("Player 1 highScore: " + getPoint1());
-        // highScore1();
+         highScore1();
         System.out.println("Player 2 highScore: " + getPoint2());
-        //highScore2();
+        highScore2();
     }
 
 

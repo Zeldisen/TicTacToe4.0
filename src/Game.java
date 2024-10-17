@@ -34,7 +34,7 @@ public class Game {
 
 
     }
-    HighScore myHighscore = new HighScore(0,0);
+    HighScore myHighscore = new HighScore();
 
     public Game(String player1Name, String player2Name) {
         this.player1Name = player1Name;
@@ -75,8 +75,9 @@ public class Game {
 
     }
 
-    private void setIndex1(String s) {
-    }
+   // private void setIndex1(String s) {
+
+   // }
 
 
     /**
@@ -85,6 +86,12 @@ public class Game {
     public void gamePlay() {
 
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Player 1 please enter your name: ");
+        player1Name = scanner.nextLine();
+        System.out.println("Player 2 please enter your name: ");
+        player2Name = scanner.nextLine();
+        System.out.println();
 
         int count = 0;  // Variable for count number of turns of the loop.
         for (int i = 0; i < 5; i++) {
@@ -186,7 +193,7 @@ public class Game {
 
                 newGameBoard();
             }
-
+            checkWinner();
             System.out.println(player2Name + " place your gamepiece " + getPlayer2() + " between the numbers 1-9: ");
             input = scanner.nextLine();
             player2 = "O";
@@ -272,6 +279,7 @@ public class Game {
 
                 newGameBoard();
             }
+
             if (input.equals("10")) {
                 System.out.println("Invalid choise, the number is to big! Only 1-9");
             }
@@ -287,8 +295,9 @@ public class Game {
 
 
 
-    }
 
+    }
+    Meny backToMeny = new Meny();
     /**
      * Method that checks and prints if nobody winns.
      */
@@ -296,11 +305,13 @@ public class Game {
 
         if (winner == player1 || winner == player2) {
             System.out.println("Winner is player1");
-            //myHighscore.highScore();
+            System.out.println();
+            myHighscore.highScore();
             getWinner();
         } else {
             System.out.println("Nobody winns, try again!");
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         }
 
@@ -317,72 +328,80 @@ public class Game {
             getIndex2();
             getIndex3();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println(player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index1 == "X" && index5 == "X" && index9 == "X") {
             getIndex1();
             getIndex5();
             getIndex9();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println( player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index3 == "X" && index5 == "X" && index7 == "X") {
             getIndex3();
             getIndex5();
             getIndex7();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println(player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index1 == "X" && index4 == "X" && index7 == "X") {
             getIndex1();
             getIndex4();
             getIndex7();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println(player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index3 == "X" && index6 == "X" && index9 == "X") {
             getIndex3();
             getIndex6();
             getIndex9();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println(player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index4 == "X" && index5 == "X" && index6 == "X") {
             getIndex4();
             getIndex5();
             getIndex6();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println(player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
-            gamePlay();
+            backToMeny.backToMeny();
+           gamePlay();
         } else if (index2 == "X" && index5 == "X" && index8 == "X") {
             getIndex2();
             getIndex5();
             getIndex8();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println(player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
-            gamePlay();
+            backToMeny.backToMeny();
+           gamePlay();
         } else if (index7 == "X" && index8 == "X" && index9 == "X") {
             getIndex7();
             getIndex8();
             getIndex9();
             setWinner(player1);
-            System.out.println("Player 1 winns! Congrats!!");
+            System.out.println(player1Name + " winns! Congrats!!");
             myHighscore.highScore1();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         }
         if (index1 == "O" && index2 == "O" && index3 == "O") {
@@ -390,27 +409,30 @@ public class Game {
             getIndex2();
             getIndex3();
             setWinner(player2);
-            System.out.println("Player 2 winns! Congrats!!");
+            System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index1 == "O" && index5 == "O" && index9 == "O") {
             getIndex1();
             getIndex5();
             getIndex9();
             setWinner(player2);
-            System.out.println("Player 2 winns! Congrats!!");
+            System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index3 == "O" && index5 == "O" && index7 == "O") {
             getIndex3();
             getIndex5();
             getIndex7();
             setWinner(player2);
-            System.out.println("Player 2 winns! Congrats!!");
+            System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
 
         } else if (index1 == "O" && index4 == "O" && index7 == "O") {
@@ -418,36 +440,40 @@ public class Game {
             getIndex4();
             getIndex7();
             setWinner(player2);
-            System.out.println("Player 2 winns! Congrats!!");
+            System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index3 == "O" && index6 == "O" && index9 == "O") {
             getIndex3();
             getIndex6();
             getIndex9();
             setWinner(player2);
-            System.out.println(player1Name + " winns! Congrats!!");
+            System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index4 == "O" && index5 == "O" && index6 == "O") {
             getIndex4();
             getIndex5();
             getIndex6();
             setWinner(player2);
-            System.out.println("Player 2 winns! Congrats!!");
+            System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index2 == "O" && index5 == "O" && index8 == "O") {
             getIndex2();
             getIndex5();
             getIndex8();
             setWinner(player2);
-            System.out.println("Player 2 winns! Congrats!!");
+            System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         } else if (index7 == "O" && index8 == "O" && index9 == "O") {
             getIndex7();
@@ -457,6 +483,7 @@ public class Game {
             System.out.println(player2Name + " winns! Congrats!!");
             myHighscore.highScore2();
             setGameBoard();
+            backToMeny.backToMeny();
             gamePlay();
         }
 
@@ -479,6 +506,8 @@ public class Game {
 
 
     }
+
+
 
     public String getIndex1() {
         return index1;
@@ -593,6 +622,9 @@ public class Game {
 
     public void setIndex2(String index2) {
         this.index2 = index2;
+    }
+    public void setIndex1(String index1){
+        this.index1 = index1;
     }
 }
 
